@@ -8,15 +8,15 @@
 ## We hypothesize that partial and progressive fine-tuning will outperform a fully frozen encoder because the model can adjust to the specific patterns in satellite images.
 ## This project aims to better understand how transfer learning strategies affect segmentation performance in Earth observation tasks such as cropland analysis. 
 
-Important Linux commands: 
+## Important Linux commands: 
 
-To build image: 
+### To build image: 
 
 ```
 docker build -t fieldmapper .
 ```
 
-To run container (mount 1 drive):
+### To run container (mount 1 drive):
 
 ```
 docker run -it \          
@@ -25,7 +25,7 @@ docker run -it \
   fieldmapper:latest
 ```
 
-To run container (mount multiple drives):
+### To run container (mount multiple drives):
 
 ```
 docker run -it \
