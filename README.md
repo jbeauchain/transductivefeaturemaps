@@ -21,7 +21,7 @@ docker build -t fieldmapper .
 ```
 docker run -it \          
   -p 8888:8888 \
-  -v YOUR DIRECTORY :/home/workdir \
+  -v $(pwd):/home/workdir \
   fieldmapper:latest
 ```
 
