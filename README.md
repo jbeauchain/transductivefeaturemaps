@@ -44,7 +44,7 @@ cd /mnt/data/deeplearning_finalproject
 cd /home/workdir/
 ```
 
-To train model:
+### To train model:
 
 ```
 python run_it.py --config ./config/train_finetune.yaml --do-train
