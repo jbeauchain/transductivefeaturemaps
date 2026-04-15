@@ -29,6 +29,7 @@ To run container (mount multiple drives):
 
 ```
 docker run -it \
+  -p 8888:8888 \
   -v $(pwd):/home/workdir \
   -v /Volumes/SanDisk:/mnt/data \
   your-image-name
