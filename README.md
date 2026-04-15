@@ -35,6 +35,15 @@ docker run -it \
   your-image-name
 ```
 
+### cd to external
+```
+cd /mnt/data/deeplearning_finalproject
+```
+### cd to main
+```
+cd /home/workdir/
+```
+
 To train model:
 
 ```
