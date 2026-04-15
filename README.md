@@ -10,13 +10,13 @@
 
 Important Linux commands: 
 
-To build: 
+To build image: 
 
 ```
 docker build -t fieldmapper .
 ```
 
-To run (mount 1 drive):
+To run container (mount 1 drive):
 
 ```
 docker run -it \          
@@ -25,12 +25,14 @@ docker run -it \
   fieldmapper:latest
 ```
 
-To run (mount multiple drives):
+To run container (mount multiple drives):
 
-```docker run -it \
+```
+docker run -it \
   -v $(pwd):/home/workdir \
   -v /Volumes/SanDisk:/mnt/data \
-  your-image-name```
+  your-image-name
+```
 
 To train model:
 
