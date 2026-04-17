@@ -32,7 +32,7 @@ docker run -it \
   -p 8888:8888 \
   -v $(pwd):/home/workdir \
   -v ~/deeplearning/transductivefeaturemaps:/home/transductivefeaturemaps \
-  -v /Volumes/SanDisk:/mnt/data \
+  -v /Volumes/SanDisk:/home/models \
   image-name
 ```
 
