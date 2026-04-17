@@ -30,9 +30,10 @@ docker run -it \
 ```
 docker run -it \
   -p 8888:8888 \
-  -v $(pwd):/home/workdir \
-  -v /Volumes/SanDisk:/mnt/data \
-  your-image-name
+  -v $(pwd):/home/workdir \ # Name of first mounted repo
+  -v ~/deeplearning/transductivefeaturemaps:/home/transductivefeaturemaps \ # name of second mounted repo
+  -v /Volumes/SanDisk:/mnt/data \ # Name of third mounted repo
+  image-name # Name of image
 ```
 
 ### cd to external
