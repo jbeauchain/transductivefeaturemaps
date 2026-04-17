@@ -30,19 +30,20 @@ docker run -it \
 ```
 docker run -it \
   -p 8888:8888 \
-  -v $(pwd):/home/workdir \ # Name of first mounted repo
-  -v ~/deeplearning/transductivefeaturemaps:/home/transductivefeaturemaps \ # name of second mounted repo
-  -v /Volumes/SanDisk:/mnt/data \ # Name of third mounted repo
-  image-name # Name of image
+  -v $(pwd):/home/workdir \
+  -v ~/deeplearning/transductivefeaturemaps:/home/transductivefeaturemaps \
+  -v /Volumes/SanDisk:/mnt/data \
+  image-name
+```
+
+### cd to main
+```
+cd /home/workdir/
 ```
 
 ### cd to external
 ```
 cd /mnt/data/deeplearning_finalproject
-```
-### cd to main
-```
-cd /home/workdir/
 ```
 
 ### To train model:
