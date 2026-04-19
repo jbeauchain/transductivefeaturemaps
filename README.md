@@ -41,7 +41,7 @@ docker run -it \
   -v $(pwd):/home/fieldmapper \
   -v ~/deeplearning/transductivefeaturemaps:/home/transductivefeaturemaps \
   -v /Volumes/SanDisk/deeplearning_finalproject:/home/models \
-  -v ~/deeplearning/workdir:/home/models \
+  -v ~/deeplearning/workdir:/home/workdir \
   image-name
 ```
 
