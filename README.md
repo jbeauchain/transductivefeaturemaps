@@ -38,10 +38,10 @@ docker run -it \
 ```
 docker run -it \
   -p 8888:8888 \
-  -v $(pwd):/home/fieldmapper \
+  -v ~/deeplearning/fieldmapper:/home/fieldmapper \
   -v ~/deeplearning/transductivefeaturemaps:/home/transductivefeaturemaps \
-  -v /Volumes/SanDisk/deeplearning_finalproject:/home/models \
   -v ~/deeplearning/workdir:/home/workdir \
+  -v /Volumes/SanDisk/deeplearning_finalproject:/home/models \
   image-name
 ```
 
