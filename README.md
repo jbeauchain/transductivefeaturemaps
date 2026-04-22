@@ -27,10 +27,10 @@ docker build -t fieldmapper .
 ### To run container (mount 1 drive):
 
 ```
-docker run -it \          
-  -p 8888:8888 \
-  -v $(pwd):/home/workdir \
-  fieldmapper:latest
+docker run -it \
+  -v ~/deeplearning:/home/data \
+  -v /Volumes/SanDisk/deeplearning_finalproject:/home/models \
+  image-name
 ```
 
 ### To run container (mount multiple drives):
