@@ -50,3 +50,46 @@ docker run -it \
 ```
 python run_it.py --config ./config/train_finetune.yaml --do-train
 ```
+
+
+## How to filter the images to be only ZM
+## Step 1: create your working folders: 
+mkdir -p /opt/app-root/src/transductivefeaturemaps/workdir/frozenlayerfinetune/v1
+mkdir -p /opt/app-root/src/transductivefeaturemaps/workdir/frozenlayerfinetune/v1/logs
+mkdir -p /opt/app-root/src/transductivefeaturemaps/workdir/frozenlayerfinetune/v1/checkpoints
+
+## Step 2: Go into workdir 
+cd /opt/app-root/src/transductivefeaturemaps/workdir
+
+## Step 3: Copy the original CSV:
+find /opt/app-root/src -name "croplands3-2.1.1_finetune_all_samples.csv" 
+(take the path it outputs and run): 
+cp <FOUND_PATH> /opt/app-root/src/transductivefeaturemaps/workdir/
+
+## Step 4: Create the ZM-only filtered CSV:
+python - <<'PY'
+import pandas as pd
+
+infile = "/opt/app-root/src/transductivefeaturemaps/workdir/croplands3-2.1.1_finetune_all_samples.csv"
+outfile = "/opt/app-root/src/transductivefeaturemaps/workdir/frozenlayerfinetune/v1/croplands3-2.1.1_finetune_ZM_only.csv"
+
+df = pd.read_csv(infile)
+
+df_zm = df[df["cntry"].astype(str).str.lower() == "zm"].copy()
+
+print("Original rows:", len(df))
+print("ZM-only rows:", len(df_zm))
+print(df_zm.head())
+
+df_zm.to_csv(outfile, index=False)
+print("Saved:", outfile)
+PY
+
+## Step 5: Check using:
+ls /opt/app-root/src/transductivefeaturemaps/workdir/frozenlayerfinetune/v1
+Should see something like: 
+croplands3-2.1.1_finetune_ZM_only.csv
+logs
+checkpoints
+
+
