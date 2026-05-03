@@ -1,3 +1,5 @@
+
+## The README should have the project name/brief description of the project, the names of the contributors, and a link to description.ipynb.***
 # Comparative analysis of deep learning model outputs using different fine-tuning methods
 ### Spring 2026 
 ### Applying Deep Learning to Earth Observation 
