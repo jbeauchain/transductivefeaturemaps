@@ -1,1 +1,0 @@
-epoch,train_loss,val_loss,lr,overall_accuracy,mean_accuracy,mean_iou,mean_precision,mean_recall,mean_f1_score
