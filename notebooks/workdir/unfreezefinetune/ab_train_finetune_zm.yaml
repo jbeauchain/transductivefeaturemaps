@@ -1,0 +1,99 @@
+## parameters for data loading and model specification
+Train_Validate:
+
+    # data loader parameters
+    data_path: '/opt/app-root/src/projects' #/home/airg/data/labels/cropland' 
+    log_dir: '/opt/app-root/src/projects/transductivefeaturemaps/workdir/unfreezefinetune/v2/logs' #'/home/airg/rabedi/thesis/fieldmapper/work_dir/finetune/exp2_AWS_best_ema/logs'
+
+
+
+    train_csv_name: '/opt/app-root/src/projects/transductivefeaturemaps/workdir/unfreezefinetune/croplands3-2.1.1_finetune_ZM_only.csv'    
+    # '/home/airg/rabedi/thesis/fieldmapper/croplands3-2.1.1_finetune_all_samples.csv'
+
+    data_size: 224  # Size of chips that is not buffered. (i.e., the size of labels)
+    buffer: 0  # one_side_buffer
+    buffer_comp: 0  # Buffer used when creating composite
+    img_path_cols: ['image']
+    label_path_col: 'label'
+    label_group: [0,1,2,3,4,5]
+    apply_normalization: True
+    normal_strategy: "min_max"
+    stat_procedure: 'lab'
+    global_stats: null
+    catalog_index: null
+    trans: null
+    parallel: null
+
+
+    # explicilty pass the default values for the following **kwargs
+    scale_factor: (0.75, 1.5)
+    crop_strategy: "center"
+    rotation_degree: (-180, -90, 90, 180)
+    #bshiift_subs:  # this was not defined and used in datatorch.py
+    sigma_range: [0.03, 0.07]
+    br_range: [-0.02, 0.02]
+    contrast_range: [0.9, 1.2]
+    bshift_gamma_range: (0.2, 2.0)
+    patch_shift: True
+    downfactor: 32
+    clip_val: 0
+    nodata: []
+
+
+    train_batch: 16 # 32
+    validate_batch: 4 # 10
+
+
+    # model compiler parameters
+    model: unet_att_d #attn_unet_d
+    model_compiler_buffer: 0
+    class_mapping: {0: 'non-field', 1: 'field', 2: 'field boundary'}
+    model_working_dir: '/opt/app-root/src/projects/transductivefeaturemaps/workdir/unfreezefinetune/v2' #'/home/airg/rabedi/thesis/fieldmapper/work_dir/finetune/exp2_AWS_best_ema'
+    model_out_dir: ''
+    gpu_devices: [0] # [0, 1, 2]
+    use_sync_bn: False
+    model_init_type: "kaiming"
+    params_init: '/opt/app-root/src/projects/model/best_model_pretrain-001.pth' #'/home/airg/rabedi/thesis/fieldmapper/work_dir/pretrain/exp1_AWS/best_ema_state.pth'
+    ##progressive finetuning
+    freeze_params: null #list(range(10))
+    progressive_unfreeze: False      # turn on/off (default: off if absent)
+    epochs_per_stage: 13            # unfreeze cadence
+    unfreeze_direction: deep     # shallow or deep
+    max_unfreeze_stages: 6 
+    #######
+    n_classes: 3
+    channels: 4
+        
+    
+    model_kwargs: {filter_config:  [64, 256, 512, 1024, 2048, 4096],
+                   block_num: [2, 2, 2, 2, 2, 2], 
+                   dropout_rate: 0.1, 
+                   dropout_type: 'traditional', 
+                   upmode: 'deconv_2', 
+                   use_skipAtt: False}
+    
+
+    epoch: 10
+    optimizer_name: SAM
+    learning_rate_init: 0.02
+    learning_rate_policy: "StepLR"
+    criterion: LocallyWeightedTverskyFocalLoss()
+    momentum: 0.95
+    resume: False
+    checkpoint_interval: 20
+    resume_epoch: null
+    early_stopping_patience: 10 
+    min_delta: 0.001
+    warmup_period: 10
+
+
+    val_metric_fname: finetune_metrics.csv
+    model_out_dir: '/opt/app-root/src/projects/transductivefeaturemaps/workdir/unfreezefinetune/v2/checkpoint' #'/home/airg/rabedi/thesis/fieldmapper/work_dir/finetune/exp2_AWS_best_ema/'
+
+Test:
+  separate_test_csv: null
+  saved_params: null
+    
+  
+  
+  
