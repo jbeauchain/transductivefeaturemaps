@@ -1,5 +1,5 @@
 
-# Comparative analysis of deep learning model outputs using different fine-tuning methods
+# Comparative Analysis of Deep Learning Model Outputs Using Different Fine-tuning Methods
 ### Spring 2026 
 ### Applying Deep Learning to Earth Observation 
 ## By Jenna Beauchain, Charlotte Burbridge, Andre Bergeron
